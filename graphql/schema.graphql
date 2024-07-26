@@ -1,0 +1,26 @@
+type Task {
+    id: ID!
+    title: String!
+    description: String
+    status: String!
+    user: User!
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    tasks: [Task!]!
+}
+
+type Query {
+    tasks: [Task!]! @auth
+}
+
+type Mutation {
+    login(email: String!, password: String!): String
+    logout: Boolean @auth
+    createTask(title: String!, description: String): Task @auth
+    updateTask(id: ID!, title: String, description: String, status: String): Task @auth
+    deleteTask(id: ID!): Boolean @auth
+}
