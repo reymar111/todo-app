@@ -15,7 +15,7 @@ type User {
 
 # Define the root queries
 type Query {
-    tasks: [Task!]!
+    tasks: [Task!]! @all
 }
 
 # Define the root mutations
