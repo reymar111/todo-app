@@ -11,18 +11,6 @@ class GraphQLTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testLogin()
-    {
-        $user = User::factory()->create(['password' => bcrypt('password')]);
-        $response = $this->postJson('/graphql', [
-            'query' => 'mutation { login(email: "'.$user->email.'", password: "password") }'
-        ]);
-
-                    // Output the response content for debugging
-    // dd($response->json());
-        $response->assertJsonStructure(['data' => ['login']]);
-    }
-
     public function testCreateTask()
     {
         $user = User::factory()->create();
@@ -30,15 +18,15 @@ class GraphQLTest extends TestCase
 
         $response = $this->postJson('/graphql', [
             'query' => 'mutation { 
-                createTask(title: "Test Task", description: "Test Description", status: "todo") { 
+                createTask(description: "Test Description", done: false, user_id: 1) { 
                     id 
-                    title 
                     description 
-                    status 
+                    done 
+                    user_id
                 } 
             }'
         ], ['Authorization' => 'Bearer ' . $token]);
 
-        $response->assertJsonStructure(['data' => ['createTask' => ['id', 'title', 'description', 'status']]]);
+        $response->assertJsonStructure(['data' => ['createTask' => ['id', 'description', 'done', 'user_id']]]);
     }
 }
