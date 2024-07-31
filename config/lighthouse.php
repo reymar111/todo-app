@@ -61,7 +61,9 @@ return [
     |
     */
 
-    'guards' => 'sanctum',
+    // 'guards' => ['sanctum'],
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -73,7 +75,7 @@ return [
     |
     */
 
-    'schema_path' => base_path('graphql/schema.graphql'),
+    'schema_path' => base_path('app/GraphQL/schema.graphql'),
 
     /*
     |--------------------------------------------------------------------------

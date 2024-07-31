@@ -1,8 +1,10 @@
+<?php declare(strict_types=1);
+
 namespace App\GraphQL\Mutations;
 
 use App\Models\Task;
 
-class TaskMutations
+final readonly class TaskMutation
 {
     public function createTask($root, array $args)
     {

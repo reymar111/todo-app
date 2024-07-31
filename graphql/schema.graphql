@@ -14,13 +14,13 @@ type User {
 }
 
 type Query {
-    tasks: [Task!]! @auth
+    tasks: [Task!]! @guard
 }
 
 type Mutation {
     login(email: String!, password: String!): String
-    logout: Boolean @auth
-    createTask(title: String!, description: String): Task @auth
-    updateTask(id: ID!, title: String, description: String, status: String): Task @auth
-    deleteTask(id: ID!): Boolean @auth
+    logout: Boolean @guard
+    createTask(title: String!, description: String): Task @guard
+    updateTask(id: ID!, title: String, description: String, status: String): Task @guard
+    deleteTask(id: ID!): Boolean @guard
 }

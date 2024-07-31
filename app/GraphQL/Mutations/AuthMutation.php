@@ -1,8 +1,10 @@
+<?php declare(strict_types=1);
+
 namespace App\GraphQL\Mutations;
 
 use Illuminate\Support\Facades\Auth;
 
-class AuthMutations
+final readonly class AuthMutation
 {
     public function login($root, array $args)
     {
